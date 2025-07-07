@@ -1,0 +1,6 @@
+Headers File:
+Content-length
+Content-type
+
+editor support SISO(Standard In Stand out) for transfer instead of TCP(which can also be used)
+
