@@ -13,14 +13,20 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Split(rpc.Split)
 	for scanner.Scan() {
-		mssg := scanner.Text()
-		handleMssg(logger, mssg)
+		msg := scanner.Bytes()
+		method, content, err := rpc.DecodeMessage(msg)
+		if err != nil {
+			logger.Printf("Got and error %s", err)
+			continue
+		}
+		handleMsg(logger, method, content)
 	}
 
 }
 
-func handleMssg(logger *log.Logger, mssg any) {
-	logger.Println(mssg)
+func handleMsg(logger *log.Logger, method string, content []byte) {
+	logger.Printf("We received message with Methods: %s", method)
+	_ = content
 
 }
 
