@@ -2,7 +2,9 @@ package main
 
 import (
 	"bufio"
+	"educationalsp/lsp"
 	"educationalsp/rpc"
+	"encoding/json"
 	"log"
 	"os"
 )
@@ -16,7 +18,7 @@ func main() {
 		msg := scanner.Bytes()
 		method, content, err := rpc.DecodeMessage(msg)
 		if err != nil {
-			logger.Printf("Got and error %s", err)
+			logger.Printf("Got an error %s", err)
 			continue
 		}
 		handleMsg(logger, method, content)
@@ -26,7 +28,30 @@ func main() {
 
 func handleMsg(logger *log.Logger, method string, content []byte) {
 	logger.Printf("We received message with Methods: %s", method)
-	_ = content
+	switch method {
+	case "initialize":
+		var request lsp.InitializeRequest
+		if err := json.Unmarshal(content, &request); err != nil {
+			logger.Printf("We have an error in unmarshalling the request: %s", err)
+		}
+		logger.Printf("Connected to: %s  %s",
+			request.Params.ClientInfo.Name,
+			request.Params.ClientInfo.Version,
+		)
+		//Lets reply
+		msg := lsp.NewInitializeResponse(request.Id)
+		// logger.Println("The msg got from NewInitializeResponse")
+		// logger.Println(msg)
+		reply := rpc.EncodeMessage(msg)
+		// logger.Println("The reply got from Encode Message")
+		// logger.Println(reply)
+
+		write := os.Stdout
+		write.Write([]byte(reply))
+
+		logger.Printf("Sent the reply!")
+
+	}
 
 }
 
