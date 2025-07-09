@@ -40,17 +40,23 @@ func handleMsg(logger *log.Logger, method string, content []byte) {
 		)
 		//Lets reply
 		msg := lsp.NewInitializeResponse(request.Id)
-		// logger.Println("The msg got from NewInitializeResponse")
-		// logger.Println(msg)
 		reply := rpc.EncodeMessage(msg)
-		// logger.Println("The reply got from Encode Message")
-		// logger.Println(reply)
 
 		write := os.Stdout
 		write.Write([]byte(reply))
 
 		logger.Printf("Sent the reply!")
 
+	case "textDocument/didOpen":
+		var request lsp.DidOpenTextDocumentNotification
+		if err := json.Unmarshal(content, &request); err != nil {
+			logger.Printf("We have an error in unmarshalling the request: %s", err)
+		}
+
+		logger.Printf("Opened: %s  %s",
+			request.Params.TextDocument.URI,
+			request.Params.TextDocument.Text,
+		)
 	}
 
 }
