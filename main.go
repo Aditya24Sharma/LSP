@@ -6,6 +6,7 @@ import (
 	"educationalsp/lsp"
 	"educationalsp/rpc"
 	"encoding/json"
+	"io"
 	"log"
 	"os"
 )
@@ -17,7 +18,7 @@ func main() {
 	scanner.Split(rpc.Split)
 
 	state := analysis.NewState()
-
+	writer := os.Stdout
 	for scanner.Scan() {
 		msg := scanner.Bytes()
 		method, content, err := rpc.DecodeMessage(msg)
@@ -25,12 +26,12 @@ func main() {
 			logger.Printf("Got an error %s", err)
 			continue
 		}
-		handleMsg(logger, state, method, content)
+		handleMsg(logger, writer, state, method, content)
 	}
 
 }
 
-func handleMsg(logger *log.Logger, state analysis.State, method string, content []byte) {
+func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, method string, content []byte) {
 	logger.Printf("We received message with Methods: %s", method)
 	switch method {
 	case "initialize":
@@ -44,11 +45,8 @@ func handleMsg(logger *log.Logger, state analysis.State, method string, content 
 		)
 		//Lets reply
 		msg := lsp.NewInitializeResponse(request.Id)
-		reply := rpc.EncodeMessage(msg)
 
-		write := os.Stdout
-		write.Write([]byte(reply))
-
+		writeResponse(writer, msg)
 		logger.Printf("Sent the reply!")
 
 	case "textDocument/didOpen":
@@ -78,8 +76,29 @@ func handleMsg(logger *log.Logger, state analysis.State, method string, content 
 				change.Text,
 			)
 		}
+	case "textDocument/hover":
+		var request lsp.HoverRequest
+		if err := json.Unmarshal(content, &request); err != nil {
+			logger.Printf("textDocument/hover error %s", err)
+			return
+		}
+		response := lsp.HoverResponse{
+			Response: lsp.Response{
+				RPC: "2.0",
+				Id:  &request.Id,
+			},
+			Result: lsp.HoverResult{
+				Contents: "Hello, from LSP",
+			},
+		}
+		writeResponse(writer, response)
 	}
 
+}
+
+func writeResponse(writer io.Writer, msg any) {
+	reply := rpc.EncodeMessage(msg)
+	writer.Write([]byte(reply))
 }
 
 func getLogger(fileName string) *log.Logger {
