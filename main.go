@@ -82,15 +82,7 @@ func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, metho
 			logger.Printf("textDocument/hover error %s", err)
 			return
 		}
-		response := lsp.HoverResponse{
-			Response: lsp.Response{
-				RPC: "2.0",
-				Id:  &request.Id,
-			},
-			Result: lsp.HoverResult{
-				Contents: "Hello, from LSP",
-			},
-		}
+		response := state.Hover(request.Id, request.Params.TextDocument.URI, request.Params.Position)
 		writeResponse(writer, response)
 	}
 
