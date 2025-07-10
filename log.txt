@@ -1,70 +1,19 @@
-[educationalsp]2025/07/10 10:24:04 main.go:16: Started
-[educationalsp]2025/07/10 10:24:04 main.go:35: We received message with Methods: initialize
-[educationalsp]2025/07/10 10:24:04 main.go:42: Connected to: Neovim  0.11.2+dirty
-[educationalsp]2025/07/10 10:24:04 main.go:50: Sent the reply!
-[educationalsp]2025/07/10 10:24:05 main.go:35: We received message with Methods: initialized
-[educationalsp]2025/07/10 10:24:07 main.go:35: We received message with Methods: textDocument/didOpen
-[educationalsp]2025/07/10 10:24:07 main.go:59: Opened: file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:10 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:10 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:10 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:10 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:11 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:11 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:11 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:11 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:11 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:11 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:11 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:11 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:11 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:11 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:12 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:12 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:13 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:13 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:14 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:14 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:14 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:14 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:14 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:14 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:14 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:14 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:14 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:14 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:15 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:15 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:15 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:15 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:15 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:15 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:15 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:24:15 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:24:17 main.go:35: We received message with Methods: textDocument/didSave
-[educationalsp]2025/07/10 10:24:19 main.go:35: We received message with Methods: textDocument/definition
-[educationalsp]2025/07/10 10:24:26 main.go:35: We received message with Methods: textDocument/definition
-[educationalsp]2025/07/10 10:24:29 main.go:35: We received message with Methods: textDocument/definition
-[educationalsp]2025/07/10 10:28:03 main.go:35: We received message with Methods: textDocument/didChange
-[educationalsp]2025/07/10 10:28:03 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
-[educationalsp]2025/07/10 10:28:05 main.go:35: We received message with Methods: textDocument/didSave
+[educationalsp]2025/07/10 12:55:16 main.go:16: Started
+[educationalsp]2025/07/10 12:55:16 main.go:35: We received message with Methods: initialize
+[educationalsp]2025/07/10 12:55:16 main.go:42: Connected to: Neovim  0.11.2+dirty
+[educationalsp]2025/07/10 12:55:16 main.go:50: Sent the reply!
+[educationalsp]2025/07/10 12:55:16 main.go:35: We received message with Methods: initialized
+[educationalsp]2025/07/10 12:55:19 main.go:35: We received message with Methods: textDocument/didOpen
+[educationalsp]2025/07/10 12:55:19 main.go:59: Opened: file:///home/aditya/Projects/LSP/README.md
+[educationalsp]2025/07/10 12:55:27 main.go:35: We received message with Methods: textDocument/definition
+[educationalsp]2025/07/10 12:55:38 main.go:35: We received message with Methods: textDocument/definition
+[educationalsp]2025/07/10 12:55:39 main.go:35: We received message with Methods: textDocument/definition
+[educationalsp]2025/07/10 12:55:45 main.go:35: We received message with Methods: textDocument/didChange
+[educationalsp]2025/07/10 12:55:45 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
+[educationalsp]2025/07/10 12:55:46 main.go:35: We received message with Methods: textDocument/codeAction
+[educationalsp]2025/07/10 12:55:50 main.go:35: We received message with Methods: textDocument/didChange
+[educationalsp]2025/07/10 12:55:50 main.go:71: Changed : file:///home/aditya/Projects/LSP/README.md
+[educationalsp]2025/07/10 12:55:52 main.go:35: We received message with Methods: textDocument/didSave
+[educationalsp]2025/07/10 12:56:08 main.go:35: We received message with Methods: textDocument/didOpen
+[educationalsp]2025/07/10 12:56:08 main.go:59: Opened: diffview:///home/aditya/Projects/LSP/.git/:0:/README.md
+[educationalsp]2025/07/10 12:56:18 main.go:35: We received message with Methods: textDocument/didClose

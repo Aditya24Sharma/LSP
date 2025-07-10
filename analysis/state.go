@@ -3,6 +3,7 @@ package analysis
 import (
 	"educationalsp/lsp"
 	"fmt"
+	"strings"
 )
 
 type State struct {
@@ -56,4 +57,67 @@ func (s *State) Definition(id int, uri string, position lsp.Position) lsp.Defini
 			},
 		},
 	}
+}
+
+func (s *State) CodeAction(id int, uri string) lsp.CodeActionsResponse {
+
+	text := s.Document[uri]
+
+	action := []lsp.CodeAction{}
+	for row, line := range strings.Split(text, "\n") {
+
+		idx := strings.Index(line, "VS Code")
+		if idx >= 0 {
+			replaceChange := map[string][]lsp.TextEdit{}
+			replaceChange[uri] = []lsp.TextEdit{
+				{
+					Range: lsp.Range{
+						Start: lsp.Position{
+							Line:      row,
+							Character: idx,
+						},
+						End: lsp.Position{
+							Line:      row,
+							Character: idx + len("VS Code"),
+						},
+					},
+					NewText: "NeoVim",
+				}}
+			action = append(action, lsp.CodeAction{
+				Title: "Replace VS Code with a superior editor",
+				Edit: &lsp.WorkSpaceEdit{
+					Changes: replaceChange,
+				},
+			})
+			censorChange := map[string][]lsp.TextEdit{}
+			censorChange[uri] = []lsp.TextEdit{
+				{
+					Range: lsp.Range{
+						Start: lsp.Position{
+							Line:      row,
+							Character: idx,
+						},
+						End: lsp.Position{
+							Line:      row,
+							Character: idx + len("VS Code"),
+						},
+					},
+					NewText: "VS C*de",
+				}}
+			action = append(action, lsp.CodeAction{
+				Title: "Censor to VS C*de",
+				Edit: &lsp.WorkSpaceEdit{
+					Changes: censorChange,
+				},
+			})
+		}
+	}
+	response := lsp.CodeActionsResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			Id:  &id,
+		},
+		Result: action,
+	}
+	return response
 }
