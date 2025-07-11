@@ -121,3 +121,24 @@ func (s *State) CodeAction(id int, uri string) lsp.CodeActionsResponse {
 	}
 	return response
 }
+
+func (s *State) Completion(id int, uri string) lsp.CompletionResponse {
+	items := []lsp.CompletionItem{
+		{
+			Label:         "Neovim (BTW)",
+			Detail:        "Very fun cool editor",
+			Documentation: "Fun to watch in videos and program in.",
+		},
+	}
+
+	response := lsp.CompletionResponse{
+		Response: lsp.Response{
+			RPC: "2.0",
+			Id:  &id,
+		},
+		Result: items,
+	}
+
+	return response
+
+}

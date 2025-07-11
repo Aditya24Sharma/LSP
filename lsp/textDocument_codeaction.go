@@ -6,9 +6,9 @@ type CodeActionsRequest struct {
 }
 
 type CodeActionsParams struct {
-	TextDocumentIdentifier TextDocumentIdentifier `json:"textDocument"`
-	Range                  Range                  `json:"range"`
-	Context                CodeActionContext      `json:"context"`
+	TextDocument TextDocumentIdentifier `json:"textDocument"`
+	Range        Range                  `json:"range"`
+	Context      CodeActionContext      `json:"context"`
 }
 
 type CodeActionContext struct {
