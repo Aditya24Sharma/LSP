@@ -31,6 +31,11 @@ func main() {
 
 }
 
+func writeResponse(writer io.Writer, msg any) {
+	reply := rpc.EncodeMessage(msg)
+	writer.Write([]byte(reply))
+}
+
 func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, method string, content []byte) {
 	logger.Printf("We received message with Methods: %s", method)
 	switch method {
@@ -57,10 +62,20 @@ func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, metho
 		}
 
 		logger.Printf("Opened: %s", request.Params.TextDocument.URI)
-		state.OpenDocument(
+		diagnostics := state.OpenDocument(
 			request.Params.TextDocument.URI,
 			request.Params.TextDocument.Text,
 		)
+		writeResponse(writer, lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    "2.0",
+				Method: "textDocument/publishDiagnostics",
+			},
+			Params: lsp.PublishDiagnosticsParams{
+				URI:         request.Params.TextDocument.URI,
+				Diagnostics: diagnostics,
+			},
+		})
 	case "textDocument/didChange":
 		var request lsp.DidChangeTextDocumentNotification
 		if err := json.Unmarshal(content, &request); err != nil {
@@ -71,9 +86,20 @@ func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, metho
 		logger.Printf("Changed : %s", request.Params.TextDocument.URI)
 
 		for _, change := range request.ContentChanges {
-			state.UpdateDocument(
+			diagnostics := state.UpdateDocument(
 				request.Params.TextDocument.URI,
 				change.Text,
+			)
+			writeResponse(writer, lsp.PublishDiagnosticsNotification{
+				Notification: lsp.Notification{
+					RPC:    "2.0",
+					Method: "textDocument/publishDiagnostics",
+				},
+				Params: lsp.PublishDiagnosticsParams{
+					URI:         request.TextDocument.URI,
+					Diagnostics: diagnostics,
+				},
+			},
 			)
 		}
 	case "textDocument/hover":
@@ -114,12 +140,6 @@ func handleMsg(logger *log.Logger, writer io.Writer, state analysis.State, metho
 	}
 
 }
-
-func writeResponse(writer io.Writer, msg any) {
-	reply := rpc.EncodeMessage(msg)
-	writer.Write([]byte(reply))
-}
-
 func getLogger(fileName string) *log.Logger {
 	logfile, err := os.OpenFile(fileName, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, 0666)
 	if err != nil {
